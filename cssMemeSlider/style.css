@@ -56,6 +56,7 @@ body, html {
     justify-content: space-between;
     width: 100%;
     padding:3rem 1rem 1rem;
+    position: relative;
 }
 
 .meme-text div {
@@ -64,14 +65,17 @@ body, html {
 
 .meme-text-item {
     color: white;
-    display: none; 
+    opacity: 0; 
+    transition: opacity 0.75s ease-in-out;
+    position: absolute; 
 }
 
 #slide1:checked ~ .meme-text #text1,
 #slide2:checked ~ .meme-text #text2,
 #slide3:checked ~ .meme-text #text3,
 #slide4:checked ~ .meme-text #text4 {
-    display: block; 
+    opacity: 1; 
+    position: relative; 
 }
 
 input[type="radio"] {
@@ -109,6 +113,17 @@ input[type="radio"] {
     background-color: #ccc;
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.controls label::before {
+    content: '';
+    position: absolute;
+    top: -10px; 
+    right: -10px; 
+    bottom: -15px; 
+    left: -10px; 
+    background: transparent; 
+    z-index: -1; 
 }
 
 
