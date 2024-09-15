@@ -55,7 +55,7 @@ body, html {
     display: flex;
     justify-content: space-between;
     width: 100%;
-    padding: 1rem;
+    padding:3rem 1rem 1rem;
 }
 
 .meme-text div {
@@ -103,19 +103,39 @@ input[type="radio"] {
 
 .controls label {
     display: block;
-    width: 15px;
-    height: 15px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
     background-color: #ccc;
     cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+
+input[type="radio"]#slide1:checked ~ .meme-text .controls label[for="slide1"],
+input[type="radio"]#slide2:checked ~ .meme-text .controls label[for="slide2"],
+input[type="radio"]#slide3:checked ~ .meme-text .controls label[for="slide3"],
+input[type="radio"]#slide4:checked ~ .meme-text .controls label[for="slide4"] {
+    background-color: transparent;
+    border: 2px solid #0cc73b; 
+}
+
+
+.controls label:active {
+    transform: scale(0.9);
+    background-color: #25c454; 
 }
 
 .controls label:hover {
-    background-color: #999;
+    background-color: #1caa46; 
+    transform: scale(1.1); 
 }
 
-input[type="radio"]:checked + label {
-    background-color: #666;
+
+.controls label:focus {
+    outline: none;
+    background-color: #069731; 
+    box-shadow: 0 0 0 2px #0cc7c7; 
 }
 
 @media (max-width: 768px) {
@@ -124,14 +144,15 @@ input[type="radio"]:checked + label {
     }
 
     .controls label {
-        width: 10px;
-        height: 10px;
+        width: 15px;
+        height: 15px;
     }
 
     .meme-text {
         display: flex;
         flex-direction: column-reverse;
         gap: 1rem;
+        padding: 0 1rem 1rem;
     }
 
     .controls {
